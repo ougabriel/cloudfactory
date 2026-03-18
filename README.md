@@ -65,18 +65,18 @@ I solved the "Office vs. Warehouse" discrepancy by adding an **Environmental Int
 * **PII False Positives:** We utilize a high confidence threshold (0.90) in YOLO to prevent the accidental deletion of non-sensitive warehouse data.
 * **Redundancy:** The combination of Cloud Lifecycle Policies and Scheduled Functions ensures 100% compliance with the 24-hour deletion rule.
 
-### **Monitoring and Logging: ** 
-While my this solution focuses on solving the metadata loss and the 24-hour privacy rule, in the near future I will architect the system to support a Centralized Observability Layer in Phase 2.
+### **Monitoring and Logging:**
+
+While this solution focuses on solving the metadata loss and the 24-hour privacy rule, in the near future I will architect the system to support a Centralized Observability Layer in Phase 2.
 
 The trade-off here was **Speed vs. Insight**. To get the CEO’s project back on track immediately, I prioritized the data recovery itself. However, the roadmap includes integrating Azure Monitor to create an immutable audit trail. This will transform our 'Compliance Rule' into a 'Compliance Proof,' giving ZeroCorp a verifiable record that PII is being handled correctly while providing a dashboard to track 'Warehouse vs. Office' data drift in real-time."
 ---
 # **EMAIL**
 ---
-`
 Subject: Update on Model Performance and Image Processing Improvements
 ---
-To: ceo@zerocorps.com
-CC: vp@zerocorps.com
+`To: ceo@zerocorps.com
+`Cc: vp@zerocorps.com
 ---
 Dear CEO,
 
@@ -98,9 +98,9 @@ These improvements are designed to stabilise model performance while preserving 
 
 I will continue to monitor progress closely and keep you updated as these enhancements take full effect. If helpful, I would be happy to walk you through the changes and expected impact in more detail.
 
-Best regards,
-Gabriel Okom
-AI Platform Implementation Engineer
+`Best regards,
+`Gabriel Okom
+`AI Platform Implementation Engineer
 
 ---
 `Gabriel`
