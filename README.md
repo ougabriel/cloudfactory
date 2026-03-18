@@ -106,6 +106,6 @@ AI Platform Implementation Engineer
 ---
 
 # Notes:
-![static_design](image.png)
+![static_image](image.png)
 
 ---
