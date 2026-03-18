@@ -75,8 +75,8 @@ The trade-off here was **Speed vs. Insight**. To get the CEO’s project back on
 ---
 Subject: Update on Model Performance and Image Processing Improvements
 ---
-`To: ceo@zerocorps.com
-`Cc: vp@zerocorps.com
+To: ceo@zerocorps.com  
+Cc: vp@zerocorps.com  
 ---
 Dear CEO,
 
@@ -98,9 +98,8 @@ These improvements are designed to stabilise model performance while preserving 
 
 I will continue to monitor progress closely and keep you updated as these enhancements take full effect. If helpful, I would be happy to walk you through the changes and expected impact in more detail.
 
-`Best regards,
-`Gabriel Okom
-`AI Platform Implementation Engineer
+Best regards,  
+Gabriel Okom  
+AI Platform Implementation Engineer  
 
 ---
-`Gabriel`
