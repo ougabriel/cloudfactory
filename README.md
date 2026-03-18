@@ -71,7 +71,8 @@ While my this solution focuses on solving the metadata loss and the 24-hour priv
 The trade-off here was **Speed vs. Insight**. To get the CEO’s project back on track immediately, I prioritized the data recovery itself. However, the roadmap includes integrating Azure Monitor to create an immutable audit trail. This will transform our 'Compliance Rule' into a 'Compliance Proof,' giving ZeroCorp a verifiable record that PII is being handled correctly while providing a dashboard to track 'Warehouse vs. Office' data drift in real-time."
 ---
 # **EMAIL**
-```
+---
+`
 Subject: Update on Model Performance and Image Processing Improvements
 ---
 To: ceo@zerocorps.com
