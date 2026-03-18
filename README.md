@@ -100,4 +100,6 @@ I will continue to monitor progress closely and keep you updated as these enhanc
 Best regards,
 Gabriel Okom
 AI Platform Implementation Engineer
-```
+
+---
+`Gabriel`
