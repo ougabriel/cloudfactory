@@ -5,7 +5,7 @@
 
 ## **1. Proposed Solution Overview**
 
-![Architectural-design](design4.gif)
+![Architectural_design](design5.gif)
 
 This architecture resolves critical data drift and metadata loss issues from "Transfer Bridge" without the need to refactor the existing codebase. I introduced a lightweight, non-intrusive enhancement layer built around a JSON sidecar mechanism that operates alongside the Bridge’s data flow. By also introducing a **Serverless Enrichment Layer**, I preserve original image metadata, automate PII compliance for face detection, and provide high-fidelity, enriched data to CloudFactory. 
 
