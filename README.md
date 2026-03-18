@@ -104,3 +104,8 @@ Gabriel Okom
 AI Platform Implementation Engineer  
 
 ---
+
+# Notes:
+![static_design](image.png)
+
+---
