@@ -4,9 +4,9 @@
 
 ## **1. Proposed Solution Overview**
 
-![Architectural_design](design.gif)
+![Architectural_design](design2.gif)
 
-This architecture resolves critical data drift and metadata loss issues the "Transfer Bridge" pipeline without the need to refactor the existing codebase. I introduced a lightweight, non-intrusive enhancement layer built around a JSON sidecar mechanism that operates alongside the Bridge’s data flow. By also introducing a **Serverless Enrichment Layer**, I preserve original image metadata, automate PII compliance for face detection, and provide high-fidelity, enriched data to CloudFactory. 
+This architecture resolves critical data drift and metadata loss issues from "Transfer Bridge" without the need to refactor the existing codebase. I introduced a lightweight, non-intrusive enhancement layer built around a JSON sidecar mechanism that operates alongside the Bridge’s data flow. By also introducing a **Serverless Enrichment Layer**, I preserve original image metadata, automate PII compliance for face detection, and provide high-fidelity, enriched data to CloudFactory. 
 
 
 ---
@@ -67,3 +67,33 @@ I solved the "Office vs. Warehouse" discrepancy by adding an **Environmental Int
 
 ---
 
+```
+Subject: Update on Model Performance and Image Processing Improvements
+---
+To: ceo@zerocorps.com
+CC: vp@zerocorps.com
+---
+Dear CEO,
+
+I wanted to provide a clear update on the recent concerns regarding model performance and the delays observed in the image processing workflow.
+
+Following a detailed analysis, I’ve identified two primary factors contributing to the current situation.
+
+First, there is a data quality mismatch between the images used to train the model and the images now being processed. The model was originally trained on well-lit, high-quality office images, whereas the current dataset consists largely of darker, lower-quality warehouse images. This shift in data characteristics is impacting the model’s ability to perform reliably.
+
+Second, we discovered that during the transfer process, certain image metadata (such as timestamps and location data) is being stripped. This metadata plays an important role in how the model interprets and contextualises the images, and its absence has contributed to the degradation in performance.
+
+The good news is that we have a clear and non-disruptive path forward.
+
+I have implemented a lightweight enhancement layer around the existing transfer workflow that preserves the original metadata using a sidecar approach, ensuring no loss of critical information moving forward. In parallel, we have introduced automated quality validation to filter out low-quality images, as well as an intelligent tagging system to distinguish between warehouse and office environments. This allows us to better align the data with the model’s expectations and improve overall accuracy.
+
+Additionally, we have strengthened our compliance controls by introducing automated face detection and enforcing the 24-hour deletion requirement through both lifecycle policies and scheduled verification checks.
+
+These improvements are designed to stabilise model performance while preserving the current infrastructure and prior investment. As the updated pipeline continues to process incoming data, we expect to see a measurable improvement in model quality and consistency.
+
+I will continue to monitor progress closely and keep you updated as these enhancements take full effect. If helpful, I would be happy to walk you through the changes and expected impact in more detail.
+
+Best regards,
+Gabriel Okom
+AI Platform Implementation Engineer
+```
