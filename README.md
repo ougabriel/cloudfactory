@@ -66,9 +66,7 @@ I solved the "Office vs. Warehouse" discrepancy by adding an **Environmental Int
 * **Redundancy:** The combination of Cloud Lifecycle Policies and Scheduled Functions ensures 100% compliance with the 24-hour deletion rule.
 
 ### **Monitoring and Logging:**
-
-While this solution focuses on solving the metadata loss and the 24-hour privacy rule, in the near future I will architect the system to support a Centralized Observability Layer in Phase 2.
-The trade-off here was **Speed vs. Insight**.   
+While this solution focuses on solving the metadata loss and the 24-hour privacy rule, in the near future I will architect the system to support a Centralized Observability Layer in Phase 2. The trade-off here was **Speed vs. Insight**  
 To get the CEO’s project back on track immediately, I prioritized the data recovery itself. However, the roadmap includes integrating Azure Monitor to create an immutable audit trail. This will transform our 'Compliance Rule' into a 'Compliance Proof,' giving ZeroCorp a verifiable record that PII is being handled correctly while providing a dashboard to track 'Warehouse vs. Office' data drift in real-time.
 ---
 # **EMAIL**
