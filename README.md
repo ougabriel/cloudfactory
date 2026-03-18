@@ -24,18 +24,18 @@ To prevent metadata loss, I implemented a lightweight Python script (utilizing *
 * **Action:** The moment a file lands in the Staging Blob, the Azure Function triggers *before* the Bridge can complete its Step 2 processing. It extracts the EXIF data (GPS/Timestamps) and generates a matching **JSON Sidecar File** (e.g., `image_name.jpg  to image_name_metadata.json`).
 * **Result:** The sidecar file is uploaded as a companion to the image. Even if the Bridge strips the binary metadata, the spatial-temporal context remains permanently attached to the record.
 
-> **Technical Guardrail:** To ensure the script extracts data before the Bridge processes it, we utilize **Blob Lease** or **Event Grid triggers** on the *Raw* container. Since the Bridge writes to a "Raw" blob and reads from it to create a "Processed" blob, our function targets the "Raw" creation event, ensuring we always touch the original file first.
+> **Technical Guardrail:** To ensure the script extracts data before the Bridge processes it, I utilized **Event Grid triggers** on the *Raw* container. Since the Bridge writes to a "Raw" blob and reads from it to create a "Processed" blob, our function targets the "Raw" creation event, ensuring the solution always touch the original file first.
 
 ---
 
 ## **3. Face Detection & PII Strategy**
-To enforce the 24-hour "Hard Delete" mandate for human faces, we utilize a dual-layer enforcement strategy.
+To enforce the 24-hour "Hard Delete" mandate for human faces, I utilized a dual-layer enforcement strategy.
 
 ### **The Detection Workflow:**
 1.  **AI Scan:** Each image is scanned using **YOLOv8** (Face-Detection) during the ingestion phase.
 2.  **Tagging:** If a face is detected, the image is assigned a metadata tag: `PII_Status: True`.
-3.  **Automated Purge:** * **Primary:** An **Azure Blob Lifecycle Policy** is set to permanently delete objects with the `PII_Status: True` tag exactly 24 hours after the `Capture_Timestamp`.
-    * **Secondary (Fail-safe):** A scheduled Azure Function runs every 6 hours to audit the container and force-delete any sensitive images that bypassed the lifecycle rule due to system lag.
+3.  **Automated Purge:** * **Primary:** An **Azure Blob Lifecycle Policy** is set to permanently delete objects with the `PII_Status: True` tag less than 24 hours after the `Capture_Timestamp`.
+    > **Secondary (Fail-safe):** A scheduled Azure Function runs every 6 hours to audit the container and force-delete any sensitive images that bypassed the lifecycle rule due to system lag.
 
 ---
 
@@ -43,7 +43,7 @@ To enforce the 24-hour "Hard Delete" mandate for human faces, we utilize a dual-
 
 ### **A. Quality Validation (The "Blur" Solution)**
 To restore model performance, I implemented an **Automated Quality Gate**.
-* **Method:** We use the **OpenCV Laplacian Variance** method to calculate the edge-density of each frame.
+* **Method:** I used the **OpenCV Laplacian Variance** method to calculate the edge-density of each frame.
 * **Logic:** Images falling below a pre-set "Sharpness Threshold" are automatically flagged as `Quality: Poor`.
 * **Action:** These images are diverted to a **Quarantine Bucket** for manual review or digital enhancement (CLAHE), preventing "trash" data from degrading the model.
 
@@ -57,7 +57,7 @@ I solved the "Office vs. Warehouse" discrepancy by adding an **Environmental Int
 ## **5. Trade-offs & Risk Mitigation**
 
 ### **Decisions & Trade-offs:**
-* **Investment Preservation:** I retained the existing Bridge to avoid stakeholder conflict, choosing a "Recovery Layer" over a total rebuild for speed-to-market.
+* **Investment Preservation:** I retained the existing Bridge to avoid stakeholder conflict, choosing a "Sidecar Layer" over a total rebuild for speed-to-market.
 * **Serverless Efficiency:** Azure Functions were chosen for cost-efficiency, ensuring ZeroCorp only pays for the milliseconds the code is running.
 
 ### **Risks & Mitigations:**
@@ -65,8 +65,12 @@ I solved the "Office vs. Warehouse" discrepancy by adding an **Environmental Int
 * **PII False Positives:** We utilize a high confidence threshold (0.90) in YOLO to prevent the accidental deletion of non-sensitive warehouse data.
 * **Redundancy:** The combination of Cloud Lifecycle Policies and Scheduled Functions ensures 100% compliance with the 24-hour deletion rule.
 
----
+### **Monitoring and Logging: ** 
+While my this solution focuses on solving the metadata loss and the 24-hour privacy rule, in the near future I will architect the system to support a Centralized Observability Layer in Phase 2.
 
+The trade-off here was **Speed vs. Insight**. To get the CEO’s project back on track immediately, I prioritized the data recovery itself. However, the roadmap includes integrating Azure Monitor to create an immutable audit trail. This will transform our 'Compliance Rule' into a 'Compliance Proof,' giving ZeroCorp a verifiable record that PII is being handled correctly while providing a dashboard to track 'Warehouse vs. Office' data drift in real-time."
+---
+# **EMAIL**
 ```
 Subject: Update on Model Performance and Image Processing Improvements
 ---
